@@ -14,7 +14,7 @@ namespace BookStoreApi.Services
 
         public BooksService(IBookStoreDatabaseSettings settings)
         {
-            var client = new MongoClient(settings.CollectionString);
+            var client = new MongoClient(settings.CollectionString = "mongodb://localhost:27017");
             var database = client.GetDatabase(settings.DatabaseName);
 
             _books = database.GetCollection<Book>(settings.BooksCollectionName);
